@@ -5,13 +5,100 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La météo du jour</title>
+    <link rel="shortcut icon" type="image/png" href="image/orinoco.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    <h1>Bonjour Vue</h1>
+    <header class="fixed-top">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
+			<a class="navbar-brand text-success" href="index.html">La Météo du jour</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+		  
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  <ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+                    
+				  </li>
+                  <a class="dropdown-item" href="https://thibautherbert.github.io/ThibautHERBERT_2_22122020/">Trouver un hébergement</a>
+				    <a class="dropdown-item" href="https://thibautherbert.github.io/ThibautHerbert_3_28012021/">Réserver une table</a>
+                    
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Autres services</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="https://thibautherbert.github.io/ThibautHERBERT_2_22122020/">Trouver un hébergement</a>
+						<a class="dropdown-item" href="https://thibautherbert.github.io/ThibautHerbert_3_28012021/">Réserver une table</a>
+						
+					</div>
+				</li>
+			  </ul>
+			  <form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+			  </form>
+			</div>
+		  </nav>
+	</header>
+    <h1>Retrouvez la météo de votre ville</h1>
     <div id="app">
-
+        <div class="d-flex justify-content-center bg-danger">
+            <div class="my-5">
+                <h2>{{ description }}</h2>
+                <p>{{ soustexte }}</p>
+            </div>
+        </div>
+        
+        
+        <div class="d-flex justify-content-center bg-warning">
+            <div class="input-group my-1 col-5">
+                <input type="text" class="form-control" placeholder="votre ville" aria-label="city" aria-describedby="button-addon2">
+                <button class="btn btn-secondary" type="button" id="button-addon2">Rechercher</button>
+            </div>
+        </div>
+        <div class="">
+            <h4>Les résultats :</h4>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <p>à Ville</p>
+                    <div>
+                        <p>Température : ? C°</p>
+                        <img src="" alt="icône météo">
+                        <p>phrase correspondant au temps : pluvieux (sortez votre ciré), nuageux (gardez votre pull mais vous serez au sec), ensoleillé (il est temps de sortir les lunettes de soleil)</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="my-4">
+            <h3>{{ services }}</h3>
+        </div>
+        
     </div>
+    <footer class="card text-center">
+        <div class="card-header bg-dark text-white">
+            A propos
+        </div>
+        <div class="card-body bg-footer">
+            <h5 class="card-title">Une application météo rapide qui vous propose des services complémentaires selon vos besoins</h5>
+            <img alt="logo La Météo du jour" src="">
+            <nav class="navbar navbar-expand justify-content-center bg-">  
+                <a href="index.html" class="nav-link"> Accueil</a>
+                <a href="https://thibautherbert.github.io/ThibautHERBERT_2_22122020/" class="nav-link"> Trouver un hébergement</a>
+                <a href="https://thibautherbert.github.io/ThibautHerbert_3_28012021/" class="nav-link">Réserver une table</a>
+            </nav>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="https://github.com/ThibautHerbert">Un site @Thibaut HERBERT</a>
+            
+        </div>
+    </footer>
     <script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
 </body>
 </html>
