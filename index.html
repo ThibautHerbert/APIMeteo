@@ -43,9 +43,9 @@
 			</div>
 		  </nav>
 	</header>
-    <h1>Retrouvez la météo de votre ville</h1>
+    <h1 class="mt-5 p-4">Retrouvez la météo de votre ville</h1>
     <div id="app">
-        <div class="d-flex justify-content-center bg-danger">
+        <div class="d-flex justify-content-center bg-danger px-1">
             <div class="my-5">
                 <h2>{{ description }}</h2>
                 <p>{{ soustexte }}</p>
@@ -54,8 +54,8 @@
         
         
         <div class="d-flex justify-content-center bg-warning">
-            <div class="input-group my-1 col-5">
-                <input type="text" class="form-control" placeholder="votre ville" aria-label="city" aria-describedby="button-addon2">
+            <div class="input-group my-1 col-md-5">
+                <input type="text" class="form-control" placeholder="votre ville" aria-label="city" aria-describedby="button-addon2" v-model="villeCherchee">
                 <button class="btn btn-secondary" type="button" id="button-addon2">Rechercher</button>
             </div>
         </div>
@@ -63,17 +63,27 @@
             <h4>Les résultats :</h4>
             <div class="d-flex justify-content-center">
                 <div>
-                    <p>à Ville</p>
+                    <button id="ask-weather" @click="callApi(), clicki()">Quelle est la météo ?</button>
+                    <p id="weather-result"></p>
+                </div>
+                <div>
+                    <p>conditions météos actuelles : {{current_condition.condition}}</p>
+                    <p id="nameCity">namecity : {{villeCherchee}}</p>
+                    
+                   
+                  <div> 
+                </div>
                     <div>
-                        <p>Température : ? C°</p>
-                        <img src="" alt="icône météo">
+                        <img :src= "current_condition.icon">
+                        <p>Température : {{ temperature }} ou {{current_condition.tmp}} C° </p>
+                        <div id="imgMeteo"></div>
                         <p>phrase correspondant au temps : pluvieux (sortez votre ciré), nuageux (gardez votre pull mais vous serez au sec), ensoleillé (il est temps de sortir les lunettes de soleil)</p>
                     </div>
                 </div>
             </div>
             
         </div>
-        <div class="my-4">
+        <div class="my-4 px-1">
             <h3>{{ services }}</h3>
         </div>
         
