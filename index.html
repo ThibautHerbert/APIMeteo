@@ -60,28 +60,35 @@
             </div>
         </div>
         <div class="">
+            <div class="d-flex">
+                <button id="ask-weather" @click="callApi(), clicki()">Quelle est la météo ?</button>
+                <p id="weather-result"></p>
+            </div>
             <h4>Les résultats :</h4>
             <div class="d-flex justify-content-center">
-                <div>
-                    <button id="ask-weather" @click="callApi(), clicki()">Quelle est la météo ?</button>
-                    <p id="weather-result"></p>
-                </div>
-                <div>
-                    <p>conditions météos actuelles : {{current_condition.condition}}</p>
-                    <p id="nameCity">namecity : {{villeCherchee}}</p>
-                    
-                   
-                  <div> 
-                </div>
+                
                     <div>
-                        <img :src= "current_condition.icon">
-                        <p>Température : {{ temperature }} ou {{current_condition.tmp}} C° </p>
+                        <div class="d-flex justify-content-around">
+                            <p id="nameCity">namecity : {{villeCherchee}}</p>
+                            <p>Température : {{current_condition.tmp}} C° </p>
+                        </div>
+                        <div class="d-flex justify-content-center" >
+                            <img :src= "current_condition.icon">
+                        </div>
+                        <p>conditions météos actuelles : {{current_condition.condition}}</p>
+                        
+                        
                         <div id="imgMeteo"></div>
-                        <p>phrase correspondant au temps : pluvieux (sortez votre ciré), nuageux (gardez votre pull mais vous serez au sec), ensoleillé (il est temps de sortir les lunettes de soleil)</p>
+                        <h4>Nos conseils pour sortir : </h4>
+                        <ul>
+                            <li v-if="current_condition.condition == 'Pluie'">pluvieux (sortez votre ciré)</li>
+                            <li v-if="current_condition.condition == 'Eclaircies'">nuageux (gardez votre pull mais vous serez au sec)</li>
+                            <li v-if="current_condition.tmp > 16">ensoleillé (il est temps de sortir les lunettes de soleil)</li>
+                            <li v-if="current_condition.tmp < 16">température fraiche (une petite écharpe ne ferait pas de mal)</li>
+                            <li v-if="current_condition.tmp < 6">température froide (sortez bonnet, gants, et la doudoune du placard !)</li>
+                        </ul>
                     </div>
-                </div>
             </div>
-            
         </div>
         <div class="my-4 px-1">
             <h3>{{ services }}</h3>
