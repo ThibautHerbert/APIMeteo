@@ -26,6 +26,13 @@
     font-weight: normal;
     font-style: normal;
 }
+body{
+    font-family: 'Quicksand', 'Roboto', 'Montserrat', sans-serif;
+}
+a{
+    list-style-type: none;
+    color: white;
+}
 .wallpaper{
     background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-414px.jpg");
     border-radius: 10% 30% 50% 70%;
@@ -38,12 +45,21 @@
     border-radius: 30px;
     background-color: #ffdb4c   ;
     z-index: 1040;
-    font-family: Roboto;
+    font-family: 'Roboto';
+}
+.title-link{
+    color : #0B0080;
 }
 nav a{
-    color : #0B0080;
+    
     list-style-type: none;
     font-family: 'Quicksand-SemiBold';
+}
+nav a:hover{
+    color:#db4cff;
+    border-radius: 50px;
+    background-color:#88d8ff;
+    padding: 2%;
 }
 .spanToggle{
     color: red;
@@ -86,4 +102,18 @@ nav a{
 .text-condition{
     font-family:'Quicksand-SemiBold','Roboto', 'calibri', sans-serif;
     font-size: 1.1em;
+}
+h3{
+    font-family: 'Montserrat', 'Quicksand-SemiBold','Roboto', 'calibri', sans-serif;
+    font-size: 1.4em;
+}
+footer{
+    background-image: url("../img/pexels-ruvim-3560044-414px.jpg");
+}
+.logo{
+    background: #ffdb4c;
+    color: #0B0080;
+    font-size: 1.2em;
+    border-radius:50% 20% / 10% 40%;
+    font-family:'Quicksand-SemiBold','Roboto', 'calibri', sans-serif;
 }

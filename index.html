@@ -13,7 +13,7 @@
 <body>
     <header class="fixed-top topHeader">
 		<nav class="navbar navbar-expand-lg">
-			<a class="navbar-brand" href="index.html">La Météo du jour</a>
+			<a class="navbar-brand title-link" href="index.html">La Météo du jour</a>
 			<button class="navbar-toggler btn-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon spanToggle rounded-pill"></span>
 			</button>
@@ -73,7 +73,7 @@
                 <p id="weather-result"></p>
             </div>
             <div class="border border-5 border-primary result">
-                <h4 class="title4">Les résultats :</h4>
+                <h4 class="title4">Les résultats pour le {{current_condition.date}} :</h4>
                 <div class="d-flex justify-content-center">
                     
                         <div>
@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="my-4 px-1">
-            <h3>{{ services }}</h3>
+            <h3 class="text-center">{{ services }}</h3>
         </div>
         
     </div>
@@ -113,15 +113,15 @@
             A propos
         </div>
         <div class="card-body bg-footer">
-            <h5 class="card-title">Une application météo rapide qui vous propose des services complémentaires selon vos besoins</h5>
-            <img alt="logo La Météo du jour" src="">
-            <nav class="navbar navbar-expand justify-content-center bg-">  
+            <h5 class="card-title text-white">Une application météo rapide qui vous propose des services complémentaires selon vos besoins</h5>
+            <p class=" logo">La Météo du jour </p>
+            <nav class="navbar navbar-expand justify-content-center">  
                 <a href="index.html" class="nav-link"> Accueil</a>
                 <a href="https://thibautherbert.github.io/ThibautHERBERT_2_22122020/" class="nav-link"> Trouver un hébergement</a>
                 <a href="https://thibautherbert.github.io/ThibautHerbert_3_28012021/" class="nav-link">Réserver une table</a>
             </nav>
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted logo">
             <a href="https://github.com/ThibautHerbert">Un site @Thibaut HERBERT</a>
             
         </div>
