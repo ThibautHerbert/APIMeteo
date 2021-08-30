@@ -7,17 +7,18 @@
     <title>La météo du jour</title>
     <link rel="shortcut icon" type="image/png" href="image/orinoco.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
-    <header class="fixed-top">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-warning">
-			<a class="navbar-brand text-success" href="index.html">La Météo du jour</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
+    <header class="fixed-top topHeader">
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand" href="index.html">La Météo du jour</a>
+			<button class="navbar-toggler btn-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon spanToggle rounded-pill"></span>
 			</button>
 		  
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse " id="navbarSupportedContent">
 			  <ul class="navbar-nav mr-auto">
 				<li class="nav-item active">
 					<a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
@@ -41,22 +42,29 @@
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
 			  </form>
 			</div>
-		  </nav>
+		</nav>
 	</header>
-    <h1 class="mt-5 p-4">Retrouvez la météo de votre ville</h1>
-    <div id="app">
-        <div class="d-flex justify-content-center bg-danger px-1">
-            <div class="my-5">
-                <h2>{{ description }}</h2>
-                <p>{{ soustexte }}</p>
+    
+    
+    <div id="app" >
+        
+        <div class="wallpaper mt-5 p-4">
+            <h1 >{{ description }}</h1>
+            <p class="sous-texte">{{ soustexte }}</p>
+            
+            <div class="d-flex justify-content-center px-1">
+                <div class="my-5 p-4">
+                    <h2 >Retrouvez la météo de votre ville</h2>
+                </div>
             </div>
         </div>
         
         
-        <div class="d-flex justify-content-center bg-warning">
+        
+        <div class="d-flex justify-content-center input-search rounded-pill">
             <div class="input-group my-1 col-md-5">
                 <input type="text" class="form-control" placeholder="votre ville" aria-label="city" aria-describedby="button-addon2" v-model="villeCherchee">
-                <button class="btn btn-secondary" type="button" id="button-addon2">Rechercher</button>
+                <button class="btn btn-search mx-2" type="button" id="button-addon2">Rechercher</button>
             </div>
         </div>
         <div class="">

@@ -1,0 +1,64 @@
+@font-face{
+    font-family: 'Roboto';
+    src: url('../Fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Quicksand';
+    src: url('../Fonts/Quicksand/static/Quicksand-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face{
+    font-family: 'Quicksand-SemiBold';
+    src: url('../Fonts/Quicksand/static/Quicksand-SemiBold.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'Raleway';
+    src: url('../Fonts/Raleway/static/Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.wallpaper{
+    background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-414px.jpg");
+    border-radius: 10% 30% 50% 70%;
+    font-family: 'Montserrat';
+}
+.sous-texte{
+    font-size: 1.5em;
+}
+.topHeader{
+    border-radius: 30px;
+    background-color: #ffdb4c   ;
+    z-index: 1040;
+    font-family: Roboto;
+}
+nav a{
+    color : #0B0080;
+    list-style-type: none;
+    font-family: 'Quicksand-SemiBold';
+}
+.spanToggle{
+    color: red;
+    /*background-color: #ffaf88 ;*/
+    background-color: #db4cff;
+    
+}
+.btn-toggler{
+    background-color:#88d8ff ;
+    border-radius: 50% 20% / 10% 40%;
+}
+.input-search{
+    background-color:#ffdb4c;
+}
+.btn-search{
+    background-color:#88d8ff;
+    border-radius: 50% 20% / 10% 40%;
+}
