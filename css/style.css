@@ -78,6 +78,9 @@ nav a:hover{
     background-color:#88d8ff;
     border-radius: 50% 20% / 10% 40%;
 }
+.btn-search2{
+    margin: 3%;
+}
 .title4{
     font-family: 'Quicksand-SemiBold', 'Roboto', 'calibri', sans-serif;
     padding-left: 5px;

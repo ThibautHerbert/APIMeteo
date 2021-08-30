@@ -100,25 +100,25 @@
         </div>
         <div class="d-flex">
             <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather" @click="fetchNextDay()">Quelle est la météo de demain ?</button>
+                <button id="ask-weather2" class="btn-search btn-search2" @click="fetchNextDay(), toggleNextDay()">Pour demain ?</button>
             </div>
             <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather" @click="fetchThirdDay()">Quelle est la météo d'après-demain?</button>
+                <button id="ask-weather3" class="btn-search btn-search2" @click="fetchThirdDay(), toggleThirdDay()">Pour après-demain?</button>
                 
             </div>
             <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather" @click="fetchFourthDay()">Quelle est la météo d'après après-demain?</button>
+                <button id="ask-weather4" class="btn-search btn-search2" @click="fetchFourthDay(), toggleFourthDay()">Pour après après-demain?</button>
             </div>
         </div>
-        <div>
+        <div v-if=showNextDay>
             <p id="">météo lendemain : {{meteoNextDay.day_long}}</p>
             <p id=""> temp min {{meteoNextDay.tmin}}</p>
             <p id=""> temp max {{meteoNextDay.tmax}}</p>
         </div>
-        <div>
+        <div v-if=showThirdDay>
             <p id="">météo à 3 jour : {{meteoThirdDay.day_long}}</p>
         </div>
-        <div>
+        <div v-if=showFourthDay>
             <p id="">météo à 4 jour : {{meteoFourthDay.day_long}}</p>
         </div>
         <div class="my-4 px-1">

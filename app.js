@@ -14,7 +14,10 @@ const app = Vue.createApp({
             villeCherchee: "",
             meteoNextDay:"",
             meteoThirdDay:"",
-            meteoFourthDay:""
+            meteoFourthDay:"",
+            showNextDay: false,
+            showThirdDay: false,
+            showFourthDay: false
 
         }
     },
@@ -113,6 +116,15 @@ const app = Vue.createApp({
                 //.then(temperature => this.meteoNextDay = temperature.current_condition.tmp)
                 //.then(city => this.nameCity = city)
                 .catch(err => console.log(err.message))
+        },
+        toggleNextDay() {
+            this.showNextDay = !this.showNextDay
+        },
+        toggleThirdDay(){
+            this.showThirdDay = !this.showThirdDay
+        },
+        toggleFourthDay(){
+            this.showFourthDay = !this.showFourthDay
         }
     }, 
 })
