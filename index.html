@@ -72,30 +72,35 @@
                 <button id="ask-weather" @click="callApi(), clicki()">Quelle est la météo ?</button>
                 <p id="weather-result"></p>
             </div>
-            <h4>Les résultats :</h4>
-            <div class="d-flex justify-content-center">
-                
-                    <div>
-                        <div class="d-flex justify-content-around">
-                            <p id="nameCity">namecity : {{villeCherchee}}</p>
-                            <p>Température : {{current_condition.tmp}} C° </p>
+            <div class="border border-5 border-primary result">
+                <h4 class="title4">Les résultats :</h4>
+                <div class="d-flex justify-content-center">
+                    
+                        <div>
+                            <div class="d-flex justify-content-around text3">
+                                <p id="nameCity" class="text-result">namecity : {{villeCherchee}}</p>
+                                <p class="text-result">{{current_condition.tmp}} C° </p>
+                            </div>
+                            <div class="d-flex justify-content-center" >
+                                <img :src= "current_condition.icon">
+                            </div>
+                            <p class="text-center text-condition">conditions météos actuelles : {{current_condition.condition}}</p>
+                            
+                            
+                            <div id="imgMeteo"></div>
+                            <h4 class="title4">Nos conseils pour sortir : </h4>
+                            <ul class="text3">
+                                <li v-if="current_condition.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
+                                <li v-if="current_condition.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
+                                <li v-if="current_condition.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                                <li v-if="current_condition.tmp > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
+                                <li v-if="current_condition.tmp > 23 && current_condition.tmp < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
+                                <li v-if="current_condition.tmp > 16 && current_condition.tmp < 24">température bonne : on tente les manches courtes tout doucement !</li>
+                                <li v-if="current_condition.tmp < 16 && current_condition.tmp > 6">température fraiche : une petite écharpe ne ferait pas de mal</li>
+                                <li v-if="current_condition.tmp < 7">température froide : sortez bonnet, gants, et la doudoune du placard !</li>
+                            </ul>
                         </div>
-                        <div class="d-flex justify-content-center" >
-                            <img :src= "current_condition.icon">
-                        </div>
-                        <p>conditions météos actuelles : {{current_condition.condition}}</p>
-                        
-                        
-                        <div id="imgMeteo"></div>
-                        <h4>Nos conseils pour sortir : </h4>
-                        <ul>
-                            <li v-if="current_condition.condition == 'Pluie'">pluvieux (sortez votre ciré)</li>
-                            <li v-if="current_condition.condition == 'Eclaircies'">nuageux (gardez votre pull mais vous serez au sec)</li>
-                            <li v-if="current_condition.tmp > 16">ensoleillé (il est temps de sortir les lunettes de soleil)</li>
-                            <li v-if="current_condition.tmp < 16">température fraiche (une petite écharpe ne ferait pas de mal)</li>
-                            <li v-if="current_condition.tmp < 6">température froide (sortez bonnet, gants, et la doudoune du placard !)</li>
-                        </ul>
-                    </div>
+                </div>
             </div>
         </div>
         <div class="my-4 px-1">
