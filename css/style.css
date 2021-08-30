@@ -117,3 +117,20 @@ footer{
     border-radius:50% 20% / 10% 40%;
     font-family:'Quicksand-SemiBold','Roboto', 'calibri', sans-serif;
 }
+@media screen and (min-width: 414px) and (max-width: 768px) {
+    .wallpaper {
+        background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-768px.jpg");
+    }
+    footer{
+        background-image: url("../img/pexels-ruvim-3560044-768px.jpg");
+    }
+  }
+@media screen and (min-width: 769px) and (max-width: 1500px) {
+    .wallpaper {
+        background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-1500px.jpg");
+    }
+    footer{
+        background-image: url("../img/pexels-ruvim-3560044-1500px.jpg");
+    }
+}
+  /*990px h1 se fait déborder*/

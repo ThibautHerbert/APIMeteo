@@ -11,7 +11,11 @@ const app = Vue.createApp({
             temperature:"",
             icon: "",
             testResultat: "",
-            villeCherchee: ""
+            villeCherchee: "",
+            meteoNextDay:"",
+            meteoThirdDay:"",
+            meteoFourthDay:""
+
         }
     },
     
@@ -77,15 +81,40 @@ const app = Vue.createApp({
                     this.meteos = response;
                     
                 }
-                
             }
             //.then(() => console.log("onreadystate", response.current_condition.condition))
         },
-        
-        
-
-    },
-    
+        fetchNextDay() {
+            fetch('https://www.prevision-meteo.ch/services/json/nantes/fcst_day_1') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
+                .then(res => res.json())
+                .then(condition2 => this.meteoNextDay = condition2.fcst_day_1) //.fcst_day_1
+                .then(response => console.log(response))
+                // marchent pas :
+                //.then(temperature => this.meteoNextDay = temperature.current_condition.tmp)
+                //.then(city => this.nameCity = city)
+                .catch(err => console.log(err.message))
+        },
+        fetchThirdDay() {
+            fetch('https://www.prevision-meteo.ch/services/json/nantes/fcst_day_2') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
+                .then(res => res.json())
+                .then(condition3 => this.meteoThirdDay = condition3.fcst_day_2) //.fcst_day_1
+                .then(response => console.log(response))
+                // marchent pas :
+                //.then(temperature => this.meteoNextDay = temperature.current_condition.tmp)
+                //.then(city => this.nameCity = city)
+                .catch(err => console.log(err.message))
+        },
+        fetchFourthDay() {
+            fetch('https://www.prevision-meteo.ch/services/json/nantes/fcst_day_3') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
+                .then(res => res.json())
+                .then(condition4 => this.meteoFourthDay = condition4.fcst_day_3) //.fcst_day_1
+                .then(response => console.log(response))
+                // marchent pas :
+                //.then(temperature => this.meteoNextDay = temperature.current_condition.tmp)
+                //.then(city => this.nameCity = city)
+                .catch(err => console.log(err.message))
+        }
+    }, 
 })
 
 app.mount('#app')
