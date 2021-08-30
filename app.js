@@ -23,31 +23,15 @@ const app = Vue.createApp({
     },
     
     mounted(){
-        fetch('https://www.prevision-meteo.ch/services/json/nantes') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
-        .then(res => res.json())
-        //.then(response => this.meteos = response.data)
-        //.then(data => this.meteos = data.city_info) // si utilisée empâche le condition de fonctionner !
-        //.then(data => this.nameCity = data)
         
-        //.then(data => this.nameCity = data.city_info.name)
-        .then(condition => this.current_condition = condition.current_condition)
-        // marchent pas :
-        .then(temperature => this.temperature = temperature.current_condition.tmp)
-        .then(city => this.nameCity = city)
-        
-        /*
-        let response = JSON.parse(this.responseText);
-        let result = document.querySelector('#weather-result');
-            result.innerHTML = response.current_condition.condition;
-        let nameCity = document.querySelector('#nameCity');
-            nameCity.innerHTML = response.city_info.name;
-        let imgMeteo = document.querySelector('#imgMeteo');
-        let content = `<img src="${response.current_condition.icon}" class="card-img-top" alt="icône météo">`
-            imgMeteo.insertAdjacentHTML("beforeend", content);
-        this.meteos = response;
-*/
+        this.fetchCityInfo()
+        //appeler la prévision pour la ville en mounted :
+        this.fetchToday()
+        // fetch des données concernant les prévisions prochaines
+        this.fetchNextDay()
+        this.fetchThirdDay()
+        this.fetchFourthDay()
 
-       .catch(err => console.log(err.message))
     },
     
     
@@ -87,6 +71,38 @@ const app = Vue.createApp({
             }
             //.then(() => console.log("onreadystate", response.current_condition.condition))
         },
+        fetchCityInfo(){
+            fetch('https://www.prevision-meteo.ch/services/json/nantes/city_info') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
+                .then(res => res.json())
+                .then(city => this.nameCity = city.city_info)
+                .catch(err => console.log(err.message))
+        },
+        fetchToday(){
+            fetch('https://www.prevision-meteo.ch/services/json/nantes') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
+                .then(res => res.json())
+                //.then(response => this.meteos = response.data)
+                //.then(data => this.meteos = data.city_info) // si utilisée empâche le condition de fonctionner !
+                //.then(data => this.nameCity = data)
+                
+                //.then(data => this.nameCity = data.city_info.name)
+                .then(condition => this.current_condition = condition.current_condition)
+                // marchent pas :
+                .then(temperature => this.temperature = temperature.current_condition.tmp)
+                .then(city => this.nameCity = city)
+        
+        /*
+        let response = JSON.parse(this.responseText);
+        let result = document.querySelector('#weather-result');
+            result.innerHTML = response.current_condition.condition;
+        let nameCity = document.querySelector('#nameCity');
+            nameCity.innerHTML = response.city_info.name;
+        let imgMeteo = document.querySelector('#imgMeteo');
+        let content = `<img src="${response.current_condition.icon}" class="card-img-top" alt="icône météo">`
+            imgMeteo.insertAdjacentHTML("beforeend", content);
+        this.meteos = response;
+*/
+               .catch(err => console.log(err.message))
+        },
         fetchNextDay() {
             fetch('https://www.prevision-meteo.ch/services/json/nantes/fcst_day_1') // fetch('https://www.prevision-meteo.ch/services/json/' + villeCherchee)
                 .then(res => res.json())
@@ -119,12 +135,33 @@ const app = Vue.createApp({
         },
         toggleNextDay() {
             this.showNextDay = !this.showNextDay
+            // conditions pour faire disparaitre les autres prévisions
+            if (this.showThirdDay = true) {
+                this.showThirdDay = !this.showThirdDay
+            }
+            if (this.showFourthDay = true) {
+                this.showFourthDay = !this.showFourthDay
+            }
         },
         toggleThirdDay(){
             this.showThirdDay = !this.showThirdDay
+            // conditions pour faire disparaitre les autres prévisions
+            if (this.showNextDay = true) {
+                this.showNextDay = !this.showNextDay
+            } 
+            if (this.showFourthDay = true) {
+                this.showFourthDay = !this.showFourthDay
+            }
         },
         toggleFourthDay(){
             this.showFourthDay = !this.showFourthDay
+            // conditions pour faire disparaitre les autres prévisions
+            if (this.showNextDay = true) {
+                this.showNextDay = !this.showNextDay
+            }
+            if (this.showThirdDay = true) {
+                this.showThirdDay = !this.showThirdDay
+            }
         }
     }, 
 })

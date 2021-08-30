@@ -75,7 +75,7 @@
                 <div class="d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-around text3">
-                            <p id="nameCity" class="text-result">namecity : {{villeCherchee}}</p>
+                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
                             <p class="text-result">{{current_condition.tmp}} C° </p>
                         </div>
                         <div class="d-flex justify-content-center" >
@@ -98,16 +98,16 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex">
-            <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather2" class="btn-search btn-search2" @click="fetchNextDay(), toggleNextDay()">Pour demain ?</button>
+        <div class="d-flex justify-content-center ">
+            <div class="d-flex my-3 justify-content-center mx-2">
+                <button id="ask-weather2" class="btn-search btn-search2" @click=" toggleNextDay()">Pour {{meteoNextDay.day_long}} ?</button>
             </div>
-            <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather3" class="btn-search btn-search2" @click="fetchThirdDay(), toggleThirdDay()">Pour après-demain?</button>
+            <div class="d-flex my-3 justify-content-center mx-2">
+                <button id="ask-weather3" class="btn-search btn-search2" @click=" toggleThirdDay()">Pour {{meteoThirdDay.day_long}} ?</button>
                 
             </div>
-            <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather4" class="btn-search btn-search2" @click="fetchFourthDay(), toggleFourthDay()">Pour après après-demain?</button>
+            <div class="d-flex my-3 justify-content-center mx-2">
+                <button id="ask-weather4" class="btn-search btn-search2" @click=" toggleFourthDay()">Pour {{meteoFourthDay.day_long}} ?</button>
             </div>
         </div>
         <div v-if=showNextDay>
