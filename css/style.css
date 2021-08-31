@@ -33,15 +33,15 @@ a{
     list-style-type: none;
     color: white;
 }
-.wallpaper{
+.jumbo-tron{
     background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-414px.jpg");
     border-radius: 10% 30% 50% 70%;
     font-family: 'Montserrat';
 }
-.sous-texte{
+.subtext{
     font-size: 1.5em;
 }
-.topHeader{
+.top-header{
     border-radius: 30px;
     background-color: #ffdb4c   ;
     z-index: 1040;
@@ -51,7 +51,6 @@ a{
     color : #0B0080;
 }
 nav a{
-    
     list-style-type: none;
     font-family: 'Quicksand-SemiBold';
 }
@@ -65,7 +64,6 @@ nav a:hover{
     color: red;
     /*background-color: #ffaf88 ;*/
     background-color: #db4cff;
-    
 }
 .btn-toggler{
     background-color:#88d8ff ;
@@ -81,7 +79,7 @@ nav a:hover{
 .btn-search2{
     margin: 3%;
 }
-.title4{
+h4{
     font-family: 'Quicksand-SemiBold', 'Roboto', 'calibri', sans-serif;
     padding-left: 5px;
     color: white;
@@ -110,6 +108,37 @@ h3{
     font-family: 'Montserrat', 'Quicksand-SemiBold','Roboto', 'calibri', sans-serif;
     font-size: 1.4em;
 }
+.title-link{
+    color: black;
+    border-bottom: none;
+}
+.ohMyFood-btn{
+    background: linear-gradient(to bottom right, #FF79DA 10%, #9656DC 70%, #9656DC 50%);
+    border-radius: 40px;
+    border:none;
+    margin-bottom: 50px;
+    padding: 20px 40px;
+    color: white;
+    box-shadow:1px 3px 5px grey;
+}
+
+.ohMyFood-btn:hover{
+    background: #FF79DA;
+    box-shadow:1px 3px 5px #353535;
+    color: white;
+}
+.reservia-btn{
+    background-color: #2078FD;
+    color: white;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    padding: 15px;
+    border:none;
+}
+.reservia-btn:hover{
+    background-color: #0B0080;
+    color: white;
+}
 footer{
     background-image: url("../img/pexels-ruvim-3560044-414px.jpg");
 }
@@ -121,7 +150,7 @@ footer{
     font-family:'Quicksand-SemiBold','Roboto', 'calibri', sans-serif;
 }
 @media screen and (min-width: 414px) and (max-width: 768px) {
-    .wallpaper {
+    .jumbo-tron {
         background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-768px.jpg");
     }
     footer{
@@ -129,7 +158,7 @@ footer{
     }
   }
 @media screen and (min-width: 769px) and (max-width: 1500px) {
-    .wallpaper {
+    .jumbo-tron {
         background-image: url("../img/pexels-eberhard-grossgasteiger-2310713-1500px.jpg");
     }
     footer{
