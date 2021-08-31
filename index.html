@@ -111,15 +111,97 @@
             </div>
         </div>
         <div v-if=showNextDay>
-            <p id="">météo lendemain : {{meteoNextDay.day_long}}</p>
-            <p id=""> temp min {{meteoNextDay.tmin}}</p>
-            <p id=""> temp max {{meteoNextDay.tmax}}</p>
+            <div class="border border-5 border-primary result">
+                <h4 class="title4">Les résultats pour {{meteoNextDay.day_long}} :</h4>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <div class="d-flex justify-content-around text3">
+                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
+                            <p class="text-result">Le matin {{meteoNextDay.tmin}} C° </p>
+                            <p class="text-result">L'après-midi {{meteoNextDay.tmax}} C° </p>
+                            
+                        </div>
+                        <div class="d-flex justify-content-center" >
+                            <img :src= "meteoNextDay.icon">
+                        </div>
+                        <p class="text-center text-condition">conditions météos : {{meteoNextDay.condition}}</p>
+                        <div id="imgMeteo"></div>
+                        <h4 class="title4">Nos conseils pour sortir : </h4>
+                        <ul class="text3">
+                            <li v-if="meteoNextDay.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
+                            <li v-if="meteoNextDay.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
+                            <li v-if="meteoNextDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="meteoNextDay.tmax > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
+                            <li v-if="meteoNextDay.tmax > 23 && meteoNextDay.tmax < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
+                            <li v-if="meteoNextDay.tmax > 16 && meteoNextDay.tmax < 24">température bonne : on tente les manches courtes tout doucement !</li>
+                            <li v-if="meteoNextDay.tmin < 16 && meteoNextDay.tmin > 6">température fraiche : une petite écharpe ne ferait pas de mal</li>
+                            <li v-if="meteoNextDay.tmin < 7">température froide : sortez bonnet, gants, et la doudoune du placard !</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div v-if=showThirdDay>
-            <p id="">météo à 3 jour : {{meteoThirdDay.day_long}}</p>
+            <div class="border border-5 border-primary result">
+                <h4 class="title4">Les résultats pour {{meteoThirdDay.day_long}} :</h4>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <div class="d-flex justify-content-around text3">
+                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
+                            <p class="text-result">Le matin {{meteoThirdDay.tmin}} C° </p>
+                            <p class="text-result">L'après-midi {{meteoThirdDay.tmax}} C° </p>
+                            
+                        </div>
+                        <div class="d-flex justify-content-center" >
+                            <img :src= "meteoThirdDay.icon">
+                        </div>
+                        <p class="text-center text-condition">conditions météos : {{meteoThirdDay.condition}}</p>
+                        <div id="imgMeteo"></div>
+                        <h4 class="title4">Nos conseils pour sortir : </h4>
+                        <ul class="text3">
+                            <li v-if="meteoThirdDay.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
+                            <li v-if="meteoThirdDay.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
+                            <li v-if="meteoThirdDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="meteoThirdDay.tmax > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
+                            <li v-if="meteoThirdDay.tmax > 23 && meteoThirdDay.tmax < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
+                            <li v-if="meteoThirdDay.tmax > 16 && meteoThirdDay.tmax < 24">température bonne : on tente les manches courtes tout doucement !</li>
+                            <li v-if="meteoThirdDay.tmin < 16 && meteoThirdDay.tmin > 6">température fraiche : une petite écharpe ne ferait pas de mal</li>
+                            <li v-if="meteoThirdDay.tmin < 7">température froide : sortez bonnet, gants, et la doudoune du placard !</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div v-if=showFourthDay>
-            <p id="">météo à 4 jour : {{meteoFourthDay.day_long}}</p>
+            <div class="border border-5 border-primary result">
+                <h4 class="title4">Les résultats pour {{meteoFourthDay.day_long}} :</h4>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <div class="d-flex justify-content-around text3">
+                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
+                            <p class="text-result">Le matin {{meteoFourthDay.tmin}} C° </p>
+                            <p class="text-result">L'après-midi {{meteoFourthDay.tmax}} C° </p>
+                            
+                        </div>
+                        <div class="d-flex justify-content-center" >
+                            <img :src= "meteoFourthDay.icon">
+                        </div>
+                        <p class="text-center text-condition">conditions météos : {{meteoFourthDay.condition}}</p>
+                        <div id="imgMeteo"></div>
+                        <h4 class="title4">Nos conseils pour sortir : </h4>
+                        <ul class="text3">
+                            <li v-if="meteoFourthDay.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
+                            <li v-if="meteoFourthDay.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
+                            <li v-if="meteoFourthDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="meteoFourthDay.tmax > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
+                            <li v-if="meteoFourthDay.tmax > 23 && meteoFourthDay.tmax < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
+                            <li v-if="meteoFourthDay.tmax > 16 && meteoFourthDay.tmax < 24">température bonne : on tente les manches courtes tout doucement !</li>
+                            <li v-if="meteoFourthDay.tmin < 16 && meteoFourthDay.tmin > 6">température fraiche : une petite écharpe ne ferait pas de mal</li>
+                            <li v-if="meteoFourthDay.tmin < 7">température froide : sortez bonnet, gants, et la doudoune du placard !</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="my-4 px-1">
             <h3 class="text-center">{{ services }}</h3>
