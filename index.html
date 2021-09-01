@@ -51,35 +51,33 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center input-search rounded-pill">
+        <div class="d-flex justify-content-center input-search rounded-pill my-3">
             <div class="input-group my-1 col-md-5">
-                <input type="text" class="form-control" placeholder="votre ville" aria-label="city" aria-describedby="button-addon2" v-model="SearchCityInput">
-                <button class="btn btn-search mx-2" type="button" id="button-addon2">Rechercher</button>
+                <input type="text" class="form-control" placeholder="votre ville" aria-label="city" aria-describedby="button-addon2" v-model="searchCityInput" >
+                <button class="btn btn-search mx-2" type="button" id="button-addon2" @click="fetchCityInfo(), fetchToday(), fetchNextDay(), fetchThirdDay(), fetchFourthDay()">Rechercher</button>
             </div>
         </div>
-        <div class="">
-            <div class="d-flex my-3 justify-content-center">
-                <button id="ask-weather" @click="callApi(), clicki()">Quelle est la météo ?</button>
-                <p id="weather-result"></p>
-            </div>
+        <div>
             <div class="border border-5 border-primary result">
-                <h4>Les résultats pour le {{current_condition.date}} :</h4>
+                <h4>Les résultats pour le {{ current_condition.date }} :</h4>
                 <div class="d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-around text3">
-                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
-                            <p class="text-result">{{current_condition.tmp}} C° </p>
+                            <p id="nameCity" class="text-result">{{ nameCity.name }}</p>
+                            <p class="text-result">{{ current_condition.tmp }} C° </p>
                         </div>
                         <div class="d-flex justify-content-center" >
                             <img :src= "current_condition.icon">
                         </div>
-                        <p class="text-center text-condition">conditions météos actuelles : {{current_condition.condition}}</p>
+                        <p class="text-center text-condition">conditions météos actuelles : {{ current_condition.condition }}</p>
                         <div id="imgMeteo"></div>
                         <h4>Nos conseils pour sortir : </h4>
                         <ul class="text3">
                             <li v-if="current_condition.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
                             <li v-if="current_condition.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
-                            <li v-if="current_condition.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="current_condition.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil, prenez un bain de ciel bleu</li>
+                            <li v-if="current_condition.condition == 'Développement nuageux'">Développement nuageux : </li>
+                            <li v-if="current_condition.condition == 'Faiblement orageux'">Faiblement orageux : Oubliez la balade en forêt ou votre sortie pédalo</li>
                             <li v-if="current_condition.tmp > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
                             <li v-if="current_condition.tmp > 23 && current_condition.tmp < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
                             <li v-if="current_condition.tmp > 16 && current_condition.tmp < 24">température bonne : on tente les manches courtes tout doucement !</li>
@@ -92,35 +90,37 @@
         </div>
         <div class="d-flex justify-content-center ">
             <div class="d-flex my-3 justify-content-center mx-2">
-                <button id="ask-weather2" class="btn-search btn-search2" @click=" toggleNextDay()">Pour {{meteoNextDay.day_long}} ?</button>
+                <button id="ask-weather2" class="btn-search btn-search2" @click=" toggleNextDay()">Pour {{ meteoNextDay.day_long }} ?</button>
             </div>
             <div class="d-flex my-3 justify-content-center mx-2">
-                <button id="ask-weather3" class="btn-search btn-search2" @click=" toggleThirdDay()">Pour {{meteoThirdDay.day_long}} ?</button>
+                <button id="ask-weather3" class="btn-search btn-search2" @click=" toggleThirdDay()">Pour {{ meteoThirdDay.day_long }} ?</button>
             </div>
             <div class="d-flex my-3 justify-content-center mx-2">
-                <button id="ask-weather4" class="btn-search btn-search2" @click=" toggleFourthDay()">Pour {{meteoFourthDay.day_long}} ?</button>
+                <button id="ask-weather4" class="btn-search btn-search2" @click=" toggleFourthDay()">Pour {{ meteoFourthDay.day_long }} ?</button>
             </div>
         </div>
         <div v-if=showNextDay>
             <div class="border border-5 border-primary result">
-                <h4>Les résultats pour {{meteoNextDay.day_long}} :</h4>
+                <h4>Les résultats pour {{ meteoNextDay.day_long }} :</h4>
                 <div class="d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-around text3">
-                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
-                            <p class="text-result">Le matin {{meteoNextDay.tmin}} C° </p>
-                            <p class="text-result">L'après-midi {{meteoNextDay.tmax}} C° </p>
+                            <p id="nameCity" class="text-result">{{ nameCity.name }}</p>
+                            <p class="text-result">Le matin {{ meteoNextDay.tmin }} C° </p>
+                            <p class="text-result">L'après-midi {{ meteoNextDay.tmax }} C° </p>
                         </div>
                         <div class="d-flex justify-content-center" >
                             <img :src= "meteoNextDay.icon">
                         </div>
-                        <p class="text-center text-condition">conditions météos : {{meteoNextDay.condition}}</p>
+                        <p class="text-center text-condition">conditions météos : {{ meteoNextDay.condition }}</p>
                         <div id="imgMeteo"></div>
                         <h4>Nos conseils pour sortir : </h4>
                         <ul class="text3">
                             <li v-if="meteoNextDay.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
                             <li v-if="meteoNextDay.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
-                            <li v-if="meteoNextDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="meteoNextDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil, prenez un bain de ciel bleu</li>
+                            <li v-if="meteoNextDay.condition == 'Développement nuageux'">Développement nuageux : </li>
+                            <li v-if="meteoNextDay.condition == 'Faiblement orageux'">Faiblement orageux : Oubliez la balade en forêt ou votre sortie pédalo</li>
                             <li v-if="meteoNextDay.tmax > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
                             <li v-if="meteoNextDay.tmax > 23 && meteoNextDay.tmax < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
                             <li v-if="meteoNextDay.tmax > 16 && meteoNextDay.tmax < 24">température bonne : on tente les manches courtes tout doucement !</li>
@@ -133,24 +133,26 @@
         </div>
         <div v-if=showThirdDay>
             <div class="border border-5 border-primary result">
-                <h4>Les résultats pour {{meteoThirdDay.day_long}} :</h4>
+                <h4>Les résultats pour {{ meteoThirdDay.day_long }} :</h4>
                 <div class="d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-around text3">
-                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
-                            <p class="text-result">Le matin {{meteoThirdDay.tmin}} C° </p>
-                            <p class="text-result">L'après-midi {{meteoThirdDay.tmax}} C° </p>
+                            <p id="nameCity" class="text-result">{{ nameCity.name }}</p>
+                            <p class="text-result">Le matin {{ meteoThirdDay.tmin }} C° </p>
+                            <p class="text-result">L'après-midi {{ meteoThirdDay.tmax }} C° </p>
                         </div>
                         <div class="d-flex justify-content-center" >
                             <img :src= "meteoThirdDay.icon">
                         </div>
-                        <p class="text-center text-condition">conditions météos : {{meteoThirdDay.condition}}</p>
+                        <p class="text-center text-condition">conditions météos : {{ meteoThirdDay.condition }}</p>
                         <div id="imgMeteo"></div>
                         <h4>Nos conseils pour sortir : </h4>
                         <ul class="text3">
                             <li v-if="meteoThirdDay.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
                             <li v-if="meteoThirdDay.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
-                            <li v-if="meteoThirdDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="meteoThirdDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil, prenez un bain de ciel bleu</li>
+                            <li v-if="meteoThirdDay.condition == 'Développement nuageux'">Développement nuageux : </li>
+                            <li v-if="meteoThirdDay.condition == 'Faiblement orageux'">Faiblement orageux : Oubliez la balade en forêt ou votre sortie pédalo</li>
                             <li v-if="meteoThirdDay.tmax > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
                             <li v-if="meteoThirdDay.tmax > 23 && meteoThirdDay.tmax < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
                             <li v-if="meteoThirdDay.tmax > 16 && meteoThirdDay.tmax < 24">température bonne : on tente les manches courtes tout doucement !</li>
@@ -163,24 +165,26 @@
         </div>
         <div v-if=showFourthDay>
             <div class="border border-5 border-primary result">
-                <h4>Les résultats pour {{meteoFourthDay.day_long}} :</h4>
+                <h4>Les résultats pour {{ meteoFourthDay.day_long }} :</h4>
                 <div class="d-flex justify-content-center">
                     <div>
                         <div class="d-flex justify-content-around text3">
-                            <p id="nameCity" class="text-result">{{nameCity.name}}</p>
-                            <p class="text-result">Le matin {{meteoFourthDay.tmin}} C° </p>
-                            <p class="text-result">L'après-midi {{meteoFourthDay.tmax}} C° </p>
+                            <p id="nameCity" class="text-result">{{ nameCity.name }}</p>
+                            <p class="text-result">Le matin {{ meteoFourthDay.tmin }} C° </p>
+                            <p class="text-result">L'après-midi {{ meteoFourthDay.tmax }} C° </p>
                         </div>
                         <div class="d-flex justify-content-center" >
                             <img :src= "meteoFourthDay.icon">
                         </div>
-                        <p class="text-center text-condition">conditions météos : {{meteoFourthDay.condition}}</p>
+                        <p class="text-center text-condition">conditions météos : {{ meteoFourthDay.condition }}</p>
                         <div id="imgMeteo"></div>
                         <h4>Nos conseils pour sortir : </h4>
                         <ul class="text3">
                             <li v-if="meteoFourthDay.condition == 'Pluie'">pluvieux : sortez votre ciré</li>
                             <li v-if="meteoFourthDay.condition == 'Eclaircies'">nuageux : oubliez le parapluie vous serez au sec</li>
-                            <li v-if="meteoFourthDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil</li>
+                            <li v-if="meteoFourthDay.condition == 'Ensoleillé'">ensoleillé : il est temps de sortir les lunettes de soleil, prenez un bain de ciel bleu</li>
+                            <li v-if="meteoFourthDay.condition == 'Développement nuageux'">Développement nuageux : </li>
+                            <li v-if="meteoFourthDay.condition == 'Faiblement orageux'">Faiblement orageux : Oubliez la balade en forêt ou votre sortie pédalo</li>
                             <li v-if="meteoFourthDay.tmax > 28">température très chaude : c'est pas souvent alors profitez, mais attention à l'insolation</li>
                             <li v-if="meteoFourthDay.tmax > 23 && meteoFourthDay.tmax < 28">température chaude : mettez votre gourde et un bob dans votre sac </li>
                             <li v-if="meteoFourthDay.tmax > 16 && meteoFourthDay.tmax < 24">température bonne : on tente les manches courtes tout doucement !</li>
